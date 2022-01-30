@@ -1,10 +1,14 @@
 import React from 'react'
+import { Note } from './Note'
 
-export const Notes = ({ notes }) => {
+export const Notes = ({ notes, onDelete }) => {
   return (
     <ul>
       {notes.map((note) => (
-        <li key={note.id}>{note.task}</li>
+        <Note 
+          key={note.id} 
+          note={note} 
+          onDelete={onDelete} />
       ))}
     </ul>
   )

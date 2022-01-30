@@ -19,10 +19,14 @@ export const App = () => {
     setNotes([...notes, { id: uuidv4(), task: 'New task' }])
   }
 
+  const deleteNote = (noteId) => {
+    setNotes(notes.filter(note => note.id !== noteId))
+  }
+
   return (
     <>
       <button onClick={addNote}>+</button>
-      <Notes notes={notes} />
+      <Notes notes={notes} onDelete={deleteNote} />
     </>
   )
 }
