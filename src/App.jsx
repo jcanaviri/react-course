@@ -1,5 +1,11 @@
 import React from 'react'
+import { Notes } from './components/Notes'
 
-export default function App() {
-  return <h1>Hello World</h1>
+export const App = () => {
+  return (
+    <>
+      <button onClick={() => console.log('añadir nota')}>+</button>
+      <Notes />
+    </>
+  )
 }
