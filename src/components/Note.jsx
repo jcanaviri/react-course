@@ -1,14 +1,9 @@
 import React from 'react'
 
-export const Note = ({ note, onDelete }) => {
-  const handleDelete = () => {
-    onDelete(note.id)
-  }
-
+export const Note = ({ children, ...props }) => {
   return (
-    <li>
-      <span>{note.task}</span>
-      <button onClick={handleDelete}>x</button>
-    </li>
+    <div {...props}>
+      {children}
+    </div>
   )
 }

@@ -8,10 +8,12 @@ export const App = () => {
     {
       id: uuidv4(),
       task: 'Learn React',
+      editing: false,
     },
     {
       id: uuidv4(),
       task: 'Do laundry',
+      editing: false,
     },
   ])
 
@@ -20,13 +22,37 @@ export const App = () => {
   }
 
   const deleteNote = (noteId) => {
-    setNotes(notes.filter(note => note.id !== noteId))
+    setNotes(notes.filter((note) => note.id !== noteId))
+  }
+
+  const activateNoteEdit = (noteId) => {
+    setNotes(notes.map(note => {
+      if (note.id === noteId) { 
+        note.editing = true
+      }
+      return note
+    }))
+  }
+
+  const editNote = (noteId, newTask) => {
+    setNotes(notes.map(note => {
+      if (note.id === noteId) {
+        note.editing = false
+        note.task = newTask
+      }
+      return note
+    }))
   }
 
   return (
     <>
       <button onClick={addNote}>+</button>
-      <Notes notes={notes} onDelete={deleteNote} />
+      <Notes
+        notes={notes}
+        onDelete={deleteNote}
+        onNoteClick={activateNoteEdit}
+        onEdit={editNote}
+      />
     </>
   )
 }
